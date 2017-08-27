@@ -9,7 +9,7 @@ public class Player extends Polygon {
 	int gBHeight = GameBoard.gBHeight;
 	
 	// Arrays contain the x and y coordinates of the player triangle
-    // Based on if center of player is (0,0)
+	// Based on if center of player is (0,0)
 	public static int[] playerXArray = {0, 15, -15, 0};
 	public static int[] playerYArray = {-15, 15, 15, -15};
 	
