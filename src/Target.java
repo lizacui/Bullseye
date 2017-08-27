@@ -43,8 +43,8 @@ public class Target {
 	String targetHitSound = "file:./src/target_hit.wav";
 	
 	public Target(int outRingStartPosX, int outRingStartPosY,
-			      int midRingStartPosX, int midRingStartPosY,
-			      int bullseyeStartPosX, int bullseyeStartPosY) {
+		      int midRingStartPosX, int midRingStartPosY,
+		      int bullseyeStartPosX, int bullseyeStartPosY) {
 		this.outRingUpLeftX = outRingStartPosX;
 		this.outRingUpLeftY = outRingStartPosY;
 		this.midRingUpLeftX = midRingStartPosX;
@@ -78,39 +78,38 @@ public class Target {
 				// Check if a target has been hit by a dart
 				for (Dart dart : darts) {
 					if (dart.onScreen) {
-	    				if (bullseyeBounds.contains(dart.getCenterX(), dart.getCenterY())) {
-	    					target.onScreen = false;
-	    					dart.onScreen = false;
-	    					GameBoard.playSound(targetHitSound);
-	    					// Points
-	    					DrawGamePanel.bullseyeHits += 1;
-	    					DrawGamePanel.totalPoints += 20;
-	    				}
-	    				else if (midRingBounds.contains(dart.getCenterX(), dart.getCenterY())
+						if (bullseyeBounds.contains(dart.getCenterX(), dart.getCenterY())) {
+							target.onScreen = false;
+	    						dart.onScreen = false;
+	    						GameBoard.playSound(targetHitSound);
+	    						// Points
+	    						DrawGamePanel.bullseyeHits += 1;
+	    						DrawGamePanel.totalPoints += 20;
+	    					}
+	    					else if (midRingBounds.contains(dart.getCenterX(), dart.getCenterY())
 	    						 && (((dart.getCenterX() > (target.outRingUpLeftX + Target.outRingWidth - 20))
-		    						   || (dart.getCenterX() < (target.outRingUpLeftX + 20))))) {
-	    					target.onScreen = false;
-	    					dart.onScreen = false;
-	    					GameBoard.playSound(targetHitSound);
-	    					// Points
-	    					DrawGamePanel.midRingHits += 1;
-	    					DrawGamePanel.totalPoints += 10;
-	    				}
-	    				else if (outRingBounds.contains(dart.getCenterX(), dart.getCenterY())
+		    					 || (dart.getCenterX() < (target.outRingUpLeftX + 20))))) {
+	    						target.onScreen = false;
+	    						dart.onScreen = false;
+	    						GameBoard.playSound(targetHitSound);
+	    						// Points
+	    						DrawGamePanel.midRingHits += 1;
+	    						DrawGamePanel.totalPoints += 10;
+	    					}
+	    					else if (outRingBounds.contains(dart.getCenterX(), dart.getCenterY())
 	    						 && (((dart.getCenterX() > (target.outRingUpLeftX + Target.outRingWidth - 10))
-	    							   || (dart.getCenterX() < (target.outRingUpLeftX + 10))))) {
-	    					target.onScreen = false;
-	    					dart.onScreen = false;
-	    					GameBoard.playSound(targetHitSound);
-	    					// Points
-	    					DrawGamePanel.outRingHits += 1;
-	    					DrawGamePanel.totalPoints += 5;
-	    				}
+	    						 || (dart.getCenterX() < (target.outRingUpLeftX + 10))))) {
+	    						target.onScreen = false;
+	    						dart.onScreen = false;
+	    						GameBoard.playSound(targetHitSound);
+	    						// Points
+	    						DrawGamePanel.outRingHits += 1;
+	    						DrawGamePanel.totalPoints += 5;
+	    					}
 					}
 				}
 				// If the target goes off the left or right boundary of the screen
-				if ((target.outRingUpLeftX < -Target.outRingWidth)
-					|| (target.outRingUpLeftX > gBWidth)) {
+				if ((target.outRingUpLeftX < -Target.outRingWidth) || (target.outRingUpLeftX > gBWidth)) {
 					target.onScreen = false;
 				}
 			}
@@ -130,6 +129,7 @@ public class Target {
 			this.bullseyeUpLeftX -= speedX;
 		}
 	}
+	
 }
 
 
@@ -153,7 +153,7 @@ class AddTargets implements Runnable {
 			int upLeftYStartPos = (int) (Math.random() * (GameBoard.gBHeight - Target.outRingHeight - Player.playerHeight * 4));
 
 			Target newTarget = new Target(upLeftXStartPos, upLeftYStartPos,
-					                      upLeftXStartPos + 10, upLeftYStartPos + 10,
+					              upLeftXStartPos + 10, upLeftYStartPos + 10,
 			                              upLeftXStartPos + 20, upLeftYStartPos + 20);
 			
 			if (upLeftXStartPos == Target.upLeftXStartPosArray[0]) {
