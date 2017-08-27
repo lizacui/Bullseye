@@ -100,24 +100,24 @@ public class GameBoard extends JFrame {
 		
 		try {
 			soundLocation = new URL(sound);
-        	Clip clip = null;
+			Clip clip = null;
 			clip = AudioSystem.getClip();
-        	AudioInputStream inputStream;
-        	inputStream = AudioSystem.getAudioInputStream(soundLocation);
+        		AudioInputStream inputStream;
+        		inputStream = AudioSystem.getAudioInputStream(soundLocation);
 			clip.open(inputStream);
 			clip.loop(0);
-	        clip.start();
-	    }
+			clip.start();
+		}
 		catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-        catch (UnsupportedAudioFileException | IOException e) {
+                catch (UnsupportedAudioFileException | IOException e) {
 			e.printStackTrace();
 		}
-        catch (LineUnavailableException e) {
+                catch (LineUnavailableException e) {
 			e.printStackTrace();
 		}
-    }
+	}
 	
 }
 
@@ -179,26 +179,26 @@ class DrawGamePanel extends JComponent {
 		Font font = new Font("Verdana", Font.BOLD, 20);
 		gSettings.setFont(font);
 		gSettings.drawString("SCOREBOARD" +
-				             "     Outer Ring: " + Integer.toString(outRingHits) +
-				             "     Middle Ring: " + Integer.toString(midRingHits) +
-				             "     Bullseye: " + Integer.toString(bullseyeHits) +
-				             "     Total Points: " + Integer.toString(totalPoints), 10, 20);
+			             "     Outer Ring: " + Integer.toString(outRingHits) +
+			             "     Middle Ring: " + Integer.toString(midRingHits) +
+			             "     Bullseye: " + Integer.toString(bullseyeHits) +
+			             "     Total Points: " + Integer.toString(totalPoints), 10, 20);
 
 		for(Target target : targets) {
 			if (target.onScreen) {
 				target.move(GameBoard.darts, target.startPos);
 				Shape outRing = new Ellipse2D.Double((double) target.outRingUpLeftX,
-						                             (double) target.outRingUpLeftY,
-						                             (double) Target.outRingWidth,
-						                             (double) Target.outRingHeight);
+						                     (double) target.outRingUpLeftY,
+						                     (double) Target.outRingWidth,
+			                                             (double) Target.outRingHeight);
 				Shape midRing = new Ellipse2D.Double((double) target.midRingUpLeftX,
-                                                     (double) target.midRingUpLeftY,
-                                                     (double) Target.midRingWidth,
-                                                     (double) Target.midRingHeight);
+                                                                     (double) target.midRingUpLeftY,
+                                                                     (double) Target.midRingWidth,
+                                                                     (double) Target.midRingHeight);
 				Shape bullseye = new Ellipse2D.Double((double) target.bullseyeUpLeftX,
-                                                      (double) target.bullseyeUpLeftY,
-                                                      (double) Target.bullseyeWidth,
-                                                      (double) Target.bullseyeHeight);
+                                                                      (double) target.bullseyeUpLeftY,
+                                                                      (double) Target.bullseyeWidth,
+                                                                      (double) Target.bullseyeHeight);
 				gSettings.setColor(Color.RED);
 				gSettings.fill(outRing);
 				gSettings.setColor(Color.WHITE);
